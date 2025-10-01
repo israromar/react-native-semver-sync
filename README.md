@@ -11,7 +11,7 @@ A comprehensive library for managing semantic versions and build numbers across 
 - 📱 **Cross-Platform Sync**: Automatic version synchronization between package.json, iOS, and Android
 - 🔢 **Build Number Management**: Proper build number handling for App Store/Google Play requirements
 - 🚀 **CLI Interface**: Easy-to-use command-line interface
-- 📚 **Programmatic API**: Full TypeScript API for integration into build scripts
+- 📚 **Programmatic API**: TypeScript API for Node build scripts (not for RN runtime)
 - ⚡ **Zero Configuration**: Works out of the box with standard React Native projects
 - 🛡️ **Type Safe**: Full TypeScript support with comprehensive type definitions
 
@@ -43,7 +43,7 @@ npx rn-semver major
 npx rn-semver sync
 ```
 
-### Programmatic Usage
+### Programmatic Usage (Node scripts only)
 
 ```javascript
 import { syncVersions, incrementVersion } from 'react-native-semver-sync';
@@ -155,19 +155,7 @@ const result = await incrementVersion('patch', {
 });
 ```
 
-#### Convenience Functions
-
-```typescript
-import { 
-  incrementPatch, 
-  incrementMinor, 
-  incrementMajor 
-} from 'react-native-semver-sync';
-
-await incrementPatch();   // 1.0.0 → 1.0.1
-await incrementMinor();   // 1.0.1 → 1.1.0
-await incrementMajor();   // 1.1.0 → 2.0.0
-```
+> Note: Convenience functions like `incrementPatch`, `incrementMinor`, `incrementMajor` are not exported. Use `incrementVersion('patch' | 'minor' | 'major')` instead, preferably via the CLI.
 
 ### VersionManager Class
 
